@@ -71,7 +71,49 @@ int main(int argc, const char * argv[]) {
 //    const int *&p_ref2 = ptr2; //Not OK, should be int * const
 //    *ptr2 = 10;
     
-    std::cout<< " x = "<< x << std::endl;
+//    std::cout<< " x = "<< x << std::endl;
+    
+    /*
+    const int y = 10;
+    const auto var = y; //auto is const int
+    auto &var1 = y; //var1 is a reference to y. auto is the same as the type of y. auto is a const int
+    auto ptr = &y;  //auto is a pointer to y. auto is a pointer to a const int
+    //auto * ptr2 = &y// do not use asterisk with auto
+    
+    auto list = {1,2,3,4};  //auto is a std::initializer_list<int>
+    auto l{1};  //auto is an int
+    */
+    
+    int arr[] = {1,2,3,4,5};
+    /*
+    for(auto &i : arr) {    //use reference to avoid copying of the arr elements
+       std::cout<<i<<" ";
+    }
+    
+    for(const auto &i : arr) {    //arr elements cannot be modified
+       std::cout<<i<<" ";
+    }
+     */
+    
+    /*
+//    int * pBegin = &arr[0];
+    int * pBegin = std::begin(arr);
+//    int * pEnd = &arr[5];
+    int * pEnd = std::end(arr);
+     
+     while (pBegin != pEnd){
+     std::cout<< *pBegin <<" ";
+     ++pBegin;
+     }
+    */
+    auto range = arr;
+    auto begin = std::begin(arr);
+    auto end = std::end(arr);
+    for(;begin!=end;begin++){
+        auto v = *begin;
+    }
+        
+    std::cout<<std::endl;
     
     return 0;
 }
