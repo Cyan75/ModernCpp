@@ -16,6 +16,16 @@ void Add(int a,int b, int &result) ;    //Add two numbers and return the result 
 void Factorial(int a, int &result) ;    //Find factorial of a number and return that through a reference parameter
 void Swap(int &a, int &b) ;            //Swap two numbers through reference arguments
 
+void CreateWindow(const char * title, int x, int y, int width, int height);
+
+void CreateWindow(const char * title, int x = -1, int y = -1, int width = -1, int height = -1){
+    std::cout<< "Title : " << title << std::endl;
+    std::cout<< "x : " << x << std::endl;
+    std::cout<< "y : " << y << std::endl;
+    std::cout<< "width : " << width << std::endl;
+    std::cout<< "height : " << height << std::endl;
+}
+
 int main(int argc, const char * argv[]) {
     /*
     int a = 3;
@@ -114,6 +124,10 @@ int main(int argc, const char * argv[]) {
     }
         
     std::cout<<std::endl;
+    
+    CreateWindow("Notepad", 150, 200, 500, 600);
+    CreateWindow("Notepad"); //CreateWindow("Notepad", -1, -1, -1, -1);
+    CreateWindow("Notepad", 150, 100); //CreateWindow("Notepad", 150, 100, -1, -1);
     
     return 0;
 }
