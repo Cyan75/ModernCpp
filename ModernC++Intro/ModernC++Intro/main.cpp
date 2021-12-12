@@ -26,6 +26,10 @@ void CreateWindow(const char * title, int x = -1, int y = -1, int width = -1, in
     std::cout<< "height : " << height << std::endl;
 }
 
+inline int Square(int x){
+    return x * x;
+}
+
 int main(int argc, const char * argv[]) {
     /*
     int a = 3;
@@ -50,19 +54,19 @@ int main(int argc, const char * argv[]) {
     // Const Pointer and Reference
     //Try to modify x1 & x2 and see the compilation output
     
-    int x = 5;
-    const int MAX = 12;
-    int &ref_x1 = x;
-    const int &ref_x2 = x;
+//    int x = 5;
+//    const int MAX = 12;
+//    int &ref_x1 = x;
+//    const int &ref_x2 = x;
     
     //ref_x1 = 2; // OK
     //ref_x2 = 2; // Not OK
     
     //Try to modify the pointer (e.g. ptr1) and the pointee value (e.g. *ptr1)
     
-    const int* ptr1 = &x;   // a pointer to a constant int
-    int* const ptr2 = &x;   // a constant pointer to an int
-    const int* const ptr3 = &x; // a constant pointer to a constant int
+//    const int* ptr1 = &x;   // a pointer to a constant int
+//    int* const ptr2 = &x;   // a constant pointer to an int
+//    const int* const ptr3 = &x; // a constant pointer to a constant int
     
     //*ptr1 = 10; // Not OK, the content is const
     //*ptr2 = 10; // OK
@@ -94,7 +98,7 @@ int main(int argc, const char * argv[]) {
     auto l{1};  //auto is an int
     */
     
-    int arr[] = {1,2,3,4,5};
+//    int arr[] = {1,2,3,4,5};
     /*
     for(auto &i : arr) {    //use reference to avoid copying of the arr elements
        std::cout<<i<<" ";
@@ -116,6 +120,7 @@ int main(int argc, const char * argv[]) {
      ++pBegin;
      }
     */
+    /*
     auto range = arr;
     auto begin = std::begin(arr);
     auto end = std::end(arr);
@@ -128,6 +133,11 @@ int main(int argc, const char * argv[]) {
     CreateWindow("Notepad", 150, 200, 500, 600);
     CreateWindow("Notepad"); //CreateWindow("Notepad", -1, -1, -1, -1);
     CreateWindow("Notepad", 150, 100); //CreateWindow("Notepad", 150, 100, -1, -1);
+    */
+    
+    int val = 5;
+    int result = Square(val+1);
+    std::cout<< result <<std::endl;
     
     return 0;
 }
