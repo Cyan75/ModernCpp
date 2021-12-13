@@ -30,6 +30,17 @@ inline int Square(int x){
     return x * x;
 }
 
+void Print (int count, char ch){
+    for (int i = 0; i<count; i++) {
+        std::cout << ch;
+    }
+    std::cout<<std::endl;
+}
+
+void EndMessage(){
+    std::cout<<"end"<<std::endl;
+}
+
 int main(int argc, const char * argv[]) {
     /*
     int a = 3;
@@ -135,9 +146,18 @@ int main(int argc, const char * argv[]) {
     CreateWindow("Notepad", 150, 100); //CreateWindow("Notepad", 150, 100, -1, -1);
     */
     
+    /*
     int val = 5;
     int result = Square(val+1);
     std::cout<< result <<std::endl;
+    */
+    
+    Print(5,'#');
+    
+    void (*pfn)(int, char) = &Print;
+    (*pfn)(7, '@');
+    pfn(11,'^');
+    atexit(EndMessage);
     
     return 0;
 }
