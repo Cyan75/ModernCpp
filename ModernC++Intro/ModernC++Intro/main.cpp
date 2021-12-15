@@ -38,7 +38,19 @@ void Print (int count, char ch){
 }
 
 void EndMessage(){
-    std::cout<<"end"<<std::endl;
+    std::cout<<"terminated (after main)"<<std::endl;
+}
+
+namespace Avg {
+    float Calculate(float x, float y){
+        return (x+y/2);
+    }
+}
+namespace Basic{
+    float Calculate(float x, float y){
+        return (x+y);
+    }
+
 }
 
 int main(int argc, const char * argv[]) {
@@ -152,12 +164,16 @@ int main(int argc, const char * argv[]) {
     std::cout<< result <<std::endl;
     */
     
+    /*
     Print(5,'#');
-    
     void (*pfn)(int, char) = &Print;
     (*pfn)(7, '@');
     pfn(11,'^');
     atexit(EndMessage);
+    */
+    
+    std::cout<<Avg::Calculate(3.9f, 1.5f)<<std::endl;
+    std::cout<<Basic::Calculate(3.9f, 1.5f)<<std::endl;
     
     return 0;
 }
