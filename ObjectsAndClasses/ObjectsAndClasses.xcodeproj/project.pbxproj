@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB25EC8F277374B3005FB940 /* Integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB25EC8D277374B3005FB940 /* Integer.cpp */; };
 		DB7D4142276B893900553820 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB7D4141276B893900553820 /* main.cpp */; };
 		DB7D414B276B89A300553820 /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB7D4149276B89A300553820 /* Car.cpp */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DB25EC8D277374B3005FB940 /* Integer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Integer.cpp; sourceTree = "<group>"; };
+		DB25EC8E277374B3005FB940 /* Integer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Integer.hpp; sourceTree = "<group>"; };
 		DB7D413E276B893900553820 /* ObjectsAndClasses */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjectsAndClasses; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7D4141276B893900553820 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		DB7D4149276B89A300553820 /* Car.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Car.cpp; sourceTree = "<group>"; };
@@ -63,6 +66,8 @@
 				DB7D4141276B893900553820 /* main.cpp */,
 				DB7D4149276B89A300553820 /* Car.cpp */,
 				DB7D414A276B89A300553820 /* Car.hpp */,
+				DB25EC8D277374B3005FB940 /* Integer.cpp */,
+				DB25EC8E277374B3005FB940 /* Integer.hpp */,
 			);
 			path = ObjectsAndClasses;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7D414B276B89A300553820 /* Car.cpp in Sources */,
+				DB25EC8F277374B3005FB940 /* Integer.cpp in Sources */,
 				DB7D4142276B893900553820 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
