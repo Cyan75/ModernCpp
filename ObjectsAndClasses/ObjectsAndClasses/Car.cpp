@@ -10,16 +10,28 @@
 
 int Car::totalCount = 0;// static member must be defined outside the class
 
-Car::Car() {
+/*
+ Car::Car() {
     ++totalCount;
     //no initialisation occurs ⟶ see data member initialisations in the header file
     fuel = 0;
     speed = 0;
     passengers = 0;
-}
+}*/
+/*
 Car::Car(float amount) {
     fuel = amount;
     ++totalCount;
+}
+*/
+//delegating constructors
+Car::Car():Car(0){}
+Car::Car(float amount):Car(amount,0){}
+Car::Car(float amount, int pass){
+    ++totalCount;
+    fuel = amount;
+    speed = 0;
+    passengers = pass;
 }
 void Car::FillFuel(float amount) {
     fuel = amount;
