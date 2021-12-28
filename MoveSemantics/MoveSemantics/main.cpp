@@ -29,9 +29,9 @@ void Print(int &&x) {
     std::cout << "Print(int &&)" << std::endl;
 }*/
 Integer Add(const Integer &a, const Integer &b){
-    Integer temp ;
+    Integer temp ;  //w/ default CTOR
     temp.SetValue(a.GetValue() + b.GetValue()) ;
-    return temp ;   //return by value ⟶ temprary
+    return temp ;   //return by value ⟶ temprary w/ copy CTOR
 }
 
 int main(int argc, const char * argv[]) {

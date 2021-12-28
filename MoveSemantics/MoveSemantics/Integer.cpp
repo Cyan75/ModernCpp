@@ -23,6 +23,7 @@ Integer::Integer(const Integer & obj) {
     m_pInt = new int(*obj.m_pInt);
 }
 
+//a move constructor by shallow copy
 Integer::Integer(Integer && obj) {
     std::cout << "Integer(int&&)" << std::endl;
     m_pInt = obj.m_pInt;
