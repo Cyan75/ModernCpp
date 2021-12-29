@@ -29,6 +29,27 @@ Integer::Integer(Integer && obj) {
     m_pInt = obj.m_pInt;
     obj.m_pInt = nullptr;
 }
+//Copy assignment
+Integer & Integer::operator=(const Integer &obj){
+    std::cout << "operator=(const Integer &obj)" << std::endl;
+    if(this == & obj){
+        return *this;
+    }
+    delete m_pInt;
+    m_pInt = new int(*obj.m_pInt);
+    return *this;
+}
+//Move assignment
+Integer & Integer::operator=(Integer &&obj){
+    std::cout << "operator=(Integer &&obj)" << std::endl;
+    if(this == & obj){
+        return *this;
+    }
+    delete m_pInt;
+    m_pInt = obj.m_pInt;
+    obj.m_pInt = nullptr;
+    return *this;
+}
 
 int Integer::GetValue() const {
     return *m_pInt;
