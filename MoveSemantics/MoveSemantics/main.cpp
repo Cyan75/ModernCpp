@@ -65,7 +65,18 @@ Integer Add(const Integer &a, const Integer &b){
     return temp ;   //return by value ⟶ temprary w/ copy CTOR
 }
 */
+Integer Add(int a, int b){
+    Integer temp(a+b);  // an obj created by value
+    /*
+    return temp;        // invoking Add will make another obj to store temp
+                        // Named return value optimisation : the temp obj returned by value is elided
+    */
+    return Integer(a+b);    // Retrun value optimisation : a batter implementation
+                            // the obj will be elided too here
+     
+}
 int main(int argc, const char * argv[]) {
+    
     /*
     int x = 10; //x is lvalue
     int &ref = x ;  //ref is l-value reference
@@ -89,11 +100,24 @@ int main(int argc, const char * argv[]) {
 //    n2 = n1;    //internally invoke copy assignmennt of Integer
 //    std::cout<<std::endl;
     
+    /*
     auto n3{CreateNumber(3)};   // CreateNumber(3) is an R-value : compiler will choose move CTOR
                                 // Number does not have move CTOR
                                 // the compiler will invoke the move CTOR of Integer
     std::cout<<std::endl;
     n3 = CreateNumber(3);
+    */
+    Integer a = 3;
+    // the same as
+//    Integer a = Integer(3);
+    // invokes a parametrised CTOR : elision
+    // the compiler elides this object Integer(3)
+    // compilation with -fno-elide-constructors keeps the elision from occurring. : this will invoke a move CTOR instead
+    
+    Integer b = Add(3, 5);
+    // elision : this will invoke single CTOR call
+    // no elision : this will invoke total 3 obj CTOR calls  - two from Add
+    
     std::cout<<std::endl;
     return 0;
 }
