@@ -56,6 +56,8 @@ int Integer::GetValue() const {
 }
 
 void Integer::SetValue(int value) {
+    if(m_pInt == nullptr)// new memory address created for obj
+        m_pInt = new int{};
     *m_pInt = value;
 }
 

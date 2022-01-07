@@ -75,6 +75,9 @@ Integer Add(int a, int b){
                             // the obj will be elided too here
      
 }
+void Print(Integer val){
+    
+}
 int main(int argc, const char * argv[]) {
     
     /*
@@ -107,17 +110,25 @@ int main(int argc, const char * argv[]) {
     std::cout<<std::endl;
     n3 = CreateNumber(3);
     */
-    Integer a = 3;
+//    Integer a = 3;
     // the same as
 //    Integer a = Integer(3);
     // invokes a parametrised CTOR : elision
     // the compiler elides this object Integer(3)
     // compilation with -fno-elide-constructors keeps the elision from occurring. : this will invoke a move CTOR instead
     
-    Integer b = Add(3, 5);
+//    Integer b = Add(3, 5);
     // elision : this will invoke single CTOR call
     // no elision : this will invoke total 3 obj CTOR calls  - two from Add
-    
+    Integer a(1);
     std::cout<<std::endl;
+    auto b{a};      // Integer(const Integer &obj); - L value : an obj created with a copy CTOR by default
+    std::cout<<std::endl;
+    auto c(static_cast<Integer&&>(a));  // R value : no obj created - move CTOR
+    std::cout<<std::endl;
+//    auto d(std::move(a));   // the same as c : invoke move semantics
+    Print(std::move(a));
+    a.SetValue(5);
+    std::cout<<a.GetValue()<<std::endl;
     return 0;
 }
