@@ -41,6 +41,7 @@ Integer::~Integer() {
     delete m_pInt;
 }
 
+//operator overloading
 Integer & Integer::operator++() {
     ++(*m_pInt);
     return *this;
@@ -48,23 +49,25 @@ Integer & Integer::operator++() {
 }
 
 Integer  Integer::operator++(int) {
-    Integer temp(*this);
+    Integer temp(*this); //a temporary object
     ++(*m_pInt);
-    return temp;
+    return temp;    //cannot be returned by reference
 }
 
 bool Integer::operator==(const Integer & a) const {
     return *m_pInt == *a.m_pInt;
 }
 
+// overload assignment operator to prevent shallow copy
 Integer & Integer::operator=(const Integer & a) {
     if (this != &a) {
         delete m_pInt;
         m_pInt = new int(*a.m_pInt);
     }
-    return *this;
+    return *this;   //*this is not a local obj : retrun by reference
 }
 
+//move CTOR
 Integer & Integer::operator=(Integer && a) {
     if (this != &a) {
         delete m_pInt;
@@ -74,7 +77,7 @@ Integer & Integer::operator=(Integer && a) {
     return *this;
 }
 
-//operator overloading
+
 Integer Integer::operator+(const Integer & a) const {
     Integer temp;
     *temp.m_pInt = *m_pInt + *a.m_pInt;
@@ -90,10 +93,13 @@ Integer operator +(int x, const Integer &y) {
     temp.SetValue(x + y.GetValue());
     return temp;
 }
+
+//usual isertion operator << only works for primitive types
 std::ostream & operator <<(std::ostream & out, const Integer &a) {
     out << a.GetValue();
     return out;
 }
+
 std::istream & operator >> (std::istream &input, Integer &a) {
     int x;
     input >> x;
