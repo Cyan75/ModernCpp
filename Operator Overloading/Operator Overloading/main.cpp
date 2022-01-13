@@ -9,6 +9,8 @@
 #include <iostream>
 #include <memory>
 
+// an object instead of a point
+// an object behaves like a pointer
 class IntPtr {
     Integer *m_p;
 public:
@@ -26,6 +28,9 @@ public:
     }
 };
 void CreateInteger() {
+    IntPtr p1 = new Integer(5);
+    *p1->SetValue(4);
+    
     std::unique_ptr<Integer> p(new Integer);
     //auto p2(p);
     (*p).SetValue(3);
@@ -36,9 +41,10 @@ void Process(Integer val) {
 }
 
 int main(int argc, const char * argv[]) {
-    Integer a(3);
+//    Integer a(3);
     /*auto b(std::move(a));
     std::cout << a << std::endl;*/
-    Process(std::move(a));
+//    Process(std::move(a));
+    CreateInteger();
     return 0;
 }
