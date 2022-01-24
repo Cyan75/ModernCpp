@@ -87,6 +87,10 @@ Integer Integer::operator+(const Integer & a) const {
 void Integer::operator()() {
     std::cout << *m_pInt << std::endl;
 }
+//type conversion operator
+Integer::operator int(){
+    return *m_pInt;
+}
 
 Integer operator +(int x, const Integer &y) {
     Integer temp;

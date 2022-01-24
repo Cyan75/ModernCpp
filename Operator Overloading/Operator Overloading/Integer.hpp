@@ -15,7 +15,7 @@ public:
     //Default constructor
     Integer();
     //Parameterized constructor
-    Integer(int value);
+    /*explicit */ Integer(int value);
     //Copy constructor
     Integer(const Integer &obj);
     //Move constructor
@@ -34,6 +34,8 @@ public:
     Integer operator +(const Integer & a)const;
 
     void operator ()();
+    operator int(); //type conversion opertor
+//    explicit operator int(); : the compiler can never use implicit conversion
 };
 Integer operator +(int x, const Integer &y);
 std::ostream & operator <<(std::ostream & out, const Integer &a);

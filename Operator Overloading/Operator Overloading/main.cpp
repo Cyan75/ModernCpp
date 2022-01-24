@@ -74,6 +74,7 @@ int main(int argc, const char * argv[]) {
 //    CreateInteger();
     
     /*
+    //----------------TYPE CONVERSION : primitive to primitive
     int a = 5, b = 3;
     float f = static_cast<float>(a)/b;
 //    char *p = static_cast<char*>(&a);// not working
@@ -82,12 +83,19 @@ int main(int argc, const char * argv[]) {
     const int x = 1;
     int *ip = const_cast<int*>(&x);
     */
+    
+    //----------------TYPE CONVERSION : primitive to user-defined
     Integer a1(3);
+    
+    //Initialisation
     Integer a2 = 5;
+    //cannot use explicit CTOR for implicit type conversion
     
     Print(5);// Integer i(5) is invoked
-    
+    //Assignment
     a1 = 7; //invokes the move assignment Integer & operator =(Integer &&a)
     
+    //----------------TYPE CONVERSION : user-defined to primitive
+    int x1 = a1;    // no proper conversion function -> type conversion operator
     return 0;
 }
