@@ -55,6 +55,7 @@ Integer  Integer::operator++(int) {
 }
 
 bool Integer::operator==(const Integer & a) const {
+    std::cout << "operator==(const Integer & a) const" << std::endl;
     return *m_pInt == *a.m_pInt;
 }
 
@@ -64,6 +65,7 @@ Integer & Integer::operator=(const Integer & a) {
         delete m_pInt;
         m_pInt = new int(*a.m_pInt);
     }
+    std::cout << "operator=(const Integer & a)" << std::endl;
     return *this;   //*this is not a local obj : retrun by reference
 }
 
@@ -74,6 +76,7 @@ Integer & Integer::operator=(Integer && a) {
         m_pInt = a.m_pInt;
         a.m_pInt = nullptr;
     }
+    std::cout << "operator=(Integer && a)" << std::endl;
     return *this;
 }
 

@@ -67,6 +67,24 @@ void Print(Integer a){
 //    std::cout<<a.GetValue()<<std::endl;
 //}
 
+class Product{
+    Integer m_Id;   //Integer()
+public:
+    //Assignment
+//    Product(const Integer &id){
+//        std::cout << "Product(const Integer &id)" << std::endl;
+//        m_Id = id;  // assignment operator for Integer
+//    }
+    // or Member Initialiser List
+     Product(const Integer &id) : m_Id(id){
+         std::cout << "Product(const Integer &id)" << std::endl;
+     }
+    
+    ~Product(){
+        std::cout << "~Product()" << std::endl;
+    }
+};
+
 int main(int argc, const char * argv[]) {
     /*auto b(std::move(a));
     std::cout << a << std::endl;*/
@@ -84,6 +102,7 @@ int main(int argc, const char * argv[]) {
     int *ip = const_cast<int*>(&x);
     */
     
+    /*
     //----------------TYPE CONVERSION : primitive to user-defined
     Integer a1(3);
     
@@ -97,5 +116,26 @@ int main(int argc, const char * argv[]) {
     
     //----------------TYPE CONVERSION : user-defined to primitive
     int x1 = a1;    // no proper conversion function -> type conversion operator
+    */
+    
+    /*
+    //Initialisation vs Assignment vs Member initialiser list
+    Integer a(5);   //initialisation
+    std::cout << std::endl;
+    
+    std::cout << a << std::endl;
+    std::cout << std::endl;
+    
+    Integer b;
+    std::cout << std::endl;
+    b = 7;
+    // a temporary parametrised CTOR (with 7)created for assignment
+    // assigned to the obj on the left hand side
+    // assignment operator is invoked
+    // CONCLUSION : assignment requires more function calls than initialisation
+    std::cout << b << std::endl;
+    */
+    Product p(5);   // Integer(int) : 5 is converted to Integer
+    
     return 0;
 }
