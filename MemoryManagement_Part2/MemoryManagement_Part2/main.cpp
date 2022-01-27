@@ -53,9 +53,129 @@ void Operate(int value){
     Store(p);
     *p = 100;
 }
+//for shared pointers
+class Project{
+    std::string m_Name;
+public:
+    void SetName(const std::string &name){
+        m_Name = name;
+    }
+    void ShowProjectDetails() const{
+        std::cout<< "[Project Name] " <<m_Name <<'\n';
+    }
+};
+
+class Employee{
+//    Project * m_pProject{}; //every obj has to be manually deleted
+//    std::unique_ptr<Project> m_pProject{};    //cannot be shared
+    std::shared_ptr<Project> m_pProject{};
+public:
+//    void SetProject(Project *prj){
+//        m_pProject = prj;
+//    }
+    
+//    void SetProject(std::unique_ptr<Project> &prj){
+//        m_pProject = std::move(prj);    //unique pointer cannot be copied
+                                          // m_pProject has been moved, no longer exists
+//    }
+    
+    void SetProject(const std::shared_ptr<Project> &prj){
+        m_pProject = prj;    // shared pointer supports copu
+    }
+    
+//    const Project* GetProject()const{
+//        return m_pProject;
+//    }
+    
+//    const std::unique_ptr<Project>& GetProject()const{
+//        return m_pProject;
+//    }
+    
+    const std::shared_ptr<Project>& GetProject()const{
+        return m_pProject;
+    }
+};
+//void ShowInfo(Employee *emp){
+//    std::cout << "Employee project details : \n";
+//    emp->GetProject()->ShowProjectDetails();
+//}
+
+//void ShowInfo(const std::unique_ptr<Employee> &emp){
+//    std::cout << "Employee project details : \n";
+//    emp->GetProject()->ShowProjectDetails();
+//}
+
+void ShowInfo(const std::shared_ptr<Employee> &emp){
+    std::cout << "Employee project details : \n";
+    emp->GetProject()->ShowProjectDetails();
+}
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    Operate(5);
+//    Operate(5);
+    /*
+    Project *prj = new Project{};
+    prj->SetName("Video Decoder");
+     
+    Employee *e1 = new Employee{};
+    e1->SetProject(prj);
+    Employee *e2 = new Employee{};
+    e2->SetProject(prj);
+    Employee *e3 = new Employee{};
+    e3->SetProject(prj);
+    
+    ShowInfo(e1);
+    ShowInfo(e2);
+    ShowInfo(e3);
+    prj->ShowProjectDetails();
+    
+    delete prj;
+    delete e1;
+    delete e2;
+    delete e3;
+    */
+    /*
+    std::unique_ptr<Project> prj{new Project{}};// prj is empty because it is moved
+                                                // the unique pointer prj cannot be shared
+    prj->SetName("Video Decoder");
+    std::unique_ptr<Employee> e1{new Employee{}};
+    e1->SetProject(prj);
+    std::unique_ptr<Employee> e2{new Employee{}};
+    e2->SetProject(prj);
+    std::unique_ptr<Employee> e3{new Employee{}};
+    e3->SetProject(prj);
+    ShowInfo(e1);
+    ShowInfo(e2);
+    ShowInfo(e3);
+    prj->ShowProjectDetails();
+     */
+    
+    std::shared_ptr<Project> prj{ new Project{}};
+    prj->SetName("Video Decoder");
+    std::cout<< "Reference Count : " << prj.use_count() <<'\n';
+    std::shared_ptr<Employee> e1{new Employee{}};
+    e1->SetProject(prj);
+    std::cout<< "Reference Count : " << prj.use_count() <<'\n';
+    std::shared_ptr<Employee> e2{new Employee{}};
+    e2->SetProject(prj);
+    std::cout<< "Reference Count : " << prj.use_count() <<'\n';
+    std::shared_ptr<Employee> e3{new Employee{}};
+    e3->SetProject(prj);
+    std::cout<< "Reference Count : " << prj.use_count() <<'\n';
+    ShowInfo(e1);
+    ShowInfo(e2);
+    ShowInfo(e3);
+    prj->ShowProjectDetails();  //there are four copies of the shared pointer
+    std::cout<< "Reference Count : " << prj.use_count() <<'\n';
+    
+    if(e3){ //check if e3 is a valid pointer
+        
+    }
+    else{
+        
+    }
+    e1.reset(); // destroys the underlying obj, reference count decremented
+    e2.reset(new Employee{});  //decrement the reference count (delete underlying pointer if the reference count becomes zero
+                               //take ownership of this new pointer
+                               //the reference count of the new smart pointer is 1
     return 0;
 }
