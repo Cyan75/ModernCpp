@@ -8,6 +8,7 @@
 #include "Integer.hpp"
 #include <memory>
 
+/*
 void Display(Integer *p){
     if(!p){
         return;
@@ -25,7 +26,8 @@ Integer * GetPointer(int value){ //create an instance of Integer
 void Store(std::unique_ptr<Integer> &p){
     std::cout << "Storing data into a file: " << p->GetValue() << std::endl;
 }
-
+*/
+/*
 void Operate(int value){
 //    Integer *p = GetPointer(value); //General Pointer
     std::unique_ptr<Integer> p{GetPointer(value)};
@@ -64,7 +66,8 @@ public:
         std::cout<< "[Project Name] " <<m_Name <<'\n';
     }
 };
-
+*/
+/*
 class Employee{
 //    Project * m_pProject{}; //every obj has to be manually deleted
 //    std::unique_ptr<Project> m_pProject{};    //cannot be shared
@@ -95,6 +98,8 @@ public:
         return m_pProject;
     }
 };
+ */
+
 //void ShowInfo(Employee *emp){
 //    std::cout << "Employee project details : \n";
 //    emp->GetProject()->ShowProjectDetails();
@@ -105,13 +110,63 @@ public:
 //    emp->GetProject()->ShowProjectDetails();
 //}
 
-void ShowInfo(const std::shared_ptr<Employee> &emp){
-    std::cout << "Employee project details : \n";
-    emp->GetProject()->ShowProjectDetails();
-}
+//void ShowInfo(const std::shared_ptr<Employee> &emp){
+//    std::cout << "Employee project details : \n";
+//    emp->GetProject()->ShowProjectDetails();
+//}
+
+class Printer{
+//    int *m_pValue{};
+//    std::shared_ptr<int> m_pValue;
+    std::weak_ptr<int> m_pValue;
+public:
+//    void SetValue(int *p){
+//        m_pValue = p;
+//    }
+    
+//    void SetValue(std::shared_ptr<int>p){
+//        m_pValue = p;   //a copy of the shared pointer is created : reference count = 2
+//    }
+    
+    void SetValue(std::weak_ptr<int>p){
+        m_pValue = p;   //a copy of the shared pointer is created : reference count = 2
+    }
+    
+    void Print(){
+        // needed : something that checks if the pointer is still valid
+//        std::cout << "Ref count : "  << m_pValue.use_count() << std::endl;
+//        std::cout << "Value is : " << *m_pValue << std::endl;
+        if (m_pValue.expired()) {
+            std::cout << "resource is no longer available" << std::endl;
+            return;
+        }
+        auto sp = m_pValue.lock();
+        std::cout << "Value is : " << *sp << std::endl;
+        std::cout << "Ref count : "  << sp.use_count() << std::endl;
+        
+    }
+};
 
 int main(int argc, const char * argv[]) {
+    Printer prn;
+    int num{};
+    std::cin >> num;
+//    int *p = new int{num};
+    //try using a shared pointer?
+    std::shared_ptr<int> p {new int{num}};
+    prn.SetValue(p);
+    if (*p > 10) {
+//        delete p;      //p may be deleted
+        p = nullptr;    // only decremented by 1, reference count = 1, underlying memory is not released
+    }
+    
+    prn.Print();    // if p is deleted, m_pValue will point to invalid memory that already has been released
+//    delete p;
+    
+    
+    
 //    Operate(5);
+    //classical pointer
     /*
     Project *prj = new Project{};
     prj->SetName("Video Decoder");
@@ -133,6 +188,7 @@ int main(int argc, const char * argv[]) {
     delete e2;
     delete e3;
     */
+    //Unique pointer
     /*
     std::unique_ptr<Project> prj{new Project{}};// prj is empty because it is moved
                                                 // the unique pointer prj cannot be shared
@@ -149,6 +205,8 @@ int main(int argc, const char * argv[]) {
     prj->ShowProjectDetails();
      */
     
+    //Shared pointer
+    /*
     std::shared_ptr<Project> prj{ new Project{}};
     prj->SetName("Video Decoder");
     std::cout<< "Reference Count : " << prj.use_count() <<'\n';
@@ -177,5 +235,7 @@ int main(int argc, const char * argv[]) {
     e2.reset(new Employee{});  //decrement the reference count (delete underlying pointer if the reference count becomes zero
                                //take ownership of this new pointer
                                //the reference count of the new smart pointer is 1
+    */
+    
     return 0;
 }
