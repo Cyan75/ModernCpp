@@ -147,7 +147,7 @@ public:
     }
 };
 
-int main(int argc, const char * argv[]) {
+int mai(int argc, const char * argv[]) {
     Printer prn;
     int num{};
     std::cin >> num;
