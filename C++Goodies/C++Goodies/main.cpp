@@ -66,6 +66,7 @@ void UsingStdString(){
 
 enum class TrafficLight : char{RED, GREEN, YELLOW};
 */
+/*
 class Distance{
     long double m_Kilometres;
 public:
@@ -86,6 +87,24 @@ Distance operator"" _mi(long double val){
 Distance operator""_metres(long double val){
     return Distance{val / 1000};
 }
+ */
+constexpr int GetNum(){
+    return 43;
+}
+
+constexpr int Add( int x, int y){
+    return x+y;
+}
+
+constexpr int Max(int x, int y){
+    //multiple return statement is not allowed
+//    if (x>y)
+//        return x;
+//    else
+//        return y;
+    //C++14 allows this
+    return (x>y)? x : y;
+}
 int main(int argc, const char * argv[]) {
     /*
     std::cout << "Hello, World!\n";
@@ -95,10 +114,25 @@ int main(int argc, const char * argv[]) {
     FillColour(static_cast<Colour>(2));
     */
     //TODO lower to upper upper to lower translation using ToUpper and ToLower
-    
+    /*
     Distance dist{32.0_mi};
     Distance d2 {7123.0_metres};
     std::cout<< d2.GetKm()<<std::endl;
+    */
+    //behaves as a constexpr function : evaluated at compile time
+    constexpr int i = 10;
+    const int k = 20;
+    int arr[i];
+    int arr3 [k];
+    //behaves as a constexpr function : evaluated at compile time
+    const int j = GetNum();
+    int arr2[j];
     
+    //behaves as a normal function : evaluated at runtime
+    int x = GetNum();
+    
+    // the value is calculated duting compile time : faster than invoking Add
+    constexpr int sum = Add(3,5);
+    int sum2 = Add(3,5);
     return 0;
 }
