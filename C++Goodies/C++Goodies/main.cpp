@@ -147,6 +147,97 @@ void Print(std::initializer_list<int> values) {
     }
 }
 */
+union Test{
+    int x;
+    char ch;
+    //CTOR can initialise only one member
+    Test() : x{100}{
+        std::cout<< "__FUNCSIG__" <<std::endl;
+    }
+    ~Test(){
+        std::cout << "__FUNCSIG__" << std::endl;
+    }
+};
+
+struct A {
+    A() {
+        std::cout << "__FUNCSIG__" << std::endl;
+    }
+    ~A() {
+        std::cout << "__FUNCSIG__" << std::endl;
+    }
+
+    A(const A& other) {
+        std::cout << "__FUNCSIG__" << std::endl;
+    }
+
+    A(A&& other) noexcept{
+        std::cout << "__FUNCSIG__" << std::endl;
+    }
+
+    A& operator=(const A& other) {
+        std::cout << "__FUNCSIG__" << std::endl;
+        if (this == &other)
+            return *this;
+        return *this;
+    }
+
+    A& operator=(A&& other) noexcept {
+        std::cout << "__FUNCSIG__" << std::endl;
+        if (this == &other)
+            return *this;
+        return *this;
+    }
+};
+struct B {
+
+    B() {
+        std::cout << "__FUNCSIG__" << std::endl;
+
+    }
+    ~B() {
+        std::cout << "__FUNCSIG__" << std::endl;
+
+    }
+
+    B(const B& other) {
+        std::cout << "__FUNCSIG__" << std::endl ;
+    }
+
+    B(B&& other) noexcept {
+        std::cout << "__FUNCSIG__" << std::endl ;
+    }
+
+    B& operator=(const B& other) {
+        std::cout << "__FUNCSIG__" << std::endl ;
+        if (this == &other)
+            return *this;
+        return *this;
+    }
+
+    B& operator=(B&& other) noexcept {
+        std::cout << "__FUNCSIG__" << std::endl ;
+        if (this == &other)
+            return *this;
+        return *this;
+    }
+    virtual void Foo(){}
+    
+};
+
+//user-defined data type in union
+union UDT{
+    A a ;
+    B b ;
+    std::string s ;
+    UDT() {
+        
+    }
+    ~UDT() {
+        
+    }
+};
+
 int main(int argc, const char * argv[]) {
     /*
     std::cout << "Hello, World!\n";
@@ -201,6 +292,7 @@ int main(int argc, const char * argv[]) {
         std::cout << x << " ";
     }
     */
+    /*
     std::vector<int> data{1,2,3};
     for (int i=0; i<5; ++i) {
         data.push_back(i*10);
@@ -230,6 +322,21 @@ int main(int argc, const char * argv[]) {
     data.insert(it,500);
     for (auto x : data) {
         std::cout<< x << " ";
-    }
+    }*/
+    
+//    std::cout << sizeof(Test) << std::endl;
+    Test t ;
+//    std::cout << t.ch << std::endl;
+
+    t.x = 1000 ;
+
+//    std::cout << t.ch << std::endl;
+    
+    using namespace std::string_literals ;
+    UDT udt ;
+    //new(&udt.s) std::string{"Hello world"} ;
+
+    new (&udt.a) A{} ;
+    udt.a.~A() ;
     return 0;
 }
