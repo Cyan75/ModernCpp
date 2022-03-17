@@ -6,9 +6,9 @@
 //
 
 #include <iostream>
-#include "Savings.h"
-#include "Checking.h"
-#include "Transaction.h"
+#include "Savings.hpp"
+#include "Checking.hpp"
+#include "Transaction.hpp"
 #include <typeinfo>
 
 int main(int argc, const char * argv[]) {
