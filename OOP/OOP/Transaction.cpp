@@ -1,6 +1,6 @@
 //
 //  Transaction.cpp
-//  ObjectOrientedProgramming
+//  OOP
 //
 //  Created by Cyan on 2022/03/18.
 //
@@ -27,3 +27,8 @@ void Transact(Account * pAccount) {
     std::cout << "Interest rate:" << pAccount->GetInterestRate() << std::endl;
     std::cout << "Final balance:" << pAccount->GetBalance() << std::endl;
 }
+
+void Transact(std::shared_ptr<Account> shr_pAccount){
+    Transact(pAccount);
+}
+

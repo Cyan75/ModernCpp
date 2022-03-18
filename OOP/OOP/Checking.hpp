@@ -1,10 +1,10 @@
 //
 //  Checking.hpp
-//  ObjectOrientedProgramming
+//  OOP
 //
 //  Created by Cyan on 2022/03/18.
 //
-
+#pragma once
 #ifndef Checking_hpp
 #define Checking_hpp
 

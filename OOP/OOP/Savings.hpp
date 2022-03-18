@@ -1,10 +1,10 @@
 //
 //  Savings.hpp
-//  ObjectOrientedProgramming
+//  OOP
 //
 //  Created by Cyan on 2022/03/18.
 //
-
+#pragma once
 #ifndef Savings_hpp
 #define Savings_hpp
 

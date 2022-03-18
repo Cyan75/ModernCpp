@@ -1,10 +1,12 @@
 //
 //  Account.hpp
-//  ObjectOrientedProgramming
+//  OOP
 //
-//  Created by Cyan on 2022/03/17.
+//  Created by Cyan on 2022/03/18.
 //
+// a base class
 
+#pragma once
 #ifndef Account_hpp
 #define Account_hpp
 

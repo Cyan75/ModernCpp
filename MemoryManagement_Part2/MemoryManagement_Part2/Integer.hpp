@@ -4,13 +4,14 @@
 //
 //  Created by Cyan on 2022/01/26.
 //
-
+#pragma once
 #ifndef Integer_hpp
 #define Integer_hpp
 
-#include <iostream>
-class Integer {
+class Integer
+{
     int *m_pInt;
+
 public:
     //Default constructor
     Integer();
@@ -21,14 +22,13 @@ public:
     //Move constructor
     Integer(Integer &&obj);
     //Copy assignment
-    Integer & operator=(const Integer &obj);
+    Integer &operator=(const Integer &obj);
     //Move assignment
-    Integer & operator=(Integer &&obj);
-    
-    int GetValue()const;
+    Integer &operator=(Integer &&obj);
+
+    int GetValue() const;
     void SetValue(int value);
     ~Integer();
-
 };
 
 #endif /* Integer_hpp */

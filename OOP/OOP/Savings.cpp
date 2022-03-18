@@ -1,6 +1,6 @@
 //
 //  Savings.cpp
-//  ObjectOrientedProgramming
+//  OOP
 //
 //  Created by Cyan on 2022/03/18.
 //
@@ -23,3 +23,4 @@ float Savings::GetInterestRate() const {
 void Savings::AccumulateInterest() {
     m_Balance += (m_Balance * m_Rate);
 }
+
