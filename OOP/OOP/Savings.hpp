@@ -11,7 +11,7 @@
 #include "Account.hpp"
 class Savings :
     public Account {
-    float m_Rate;
+    float m_Rate; // used to accumulate the interest into the Saving account
 public:
     Savings(const std::string &name, float balance, float rate);
     ~Savings();
