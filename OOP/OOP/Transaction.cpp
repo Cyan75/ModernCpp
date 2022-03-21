@@ -28,7 +28,4 @@ void Transact(Account * pAccount) {
     std::cout << "Final balance:" << pAccount->GetBalance() << std::endl;
 }
 
-void Transact(std::shared_ptr<Account> shr_pAccount){
-    Transact(pAccount);
-}
 

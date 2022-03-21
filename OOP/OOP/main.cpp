@@ -11,13 +11,38 @@
 #include "Transaction.hpp"
 #include <typeinfo>
 
-int main(int argc, const char * argv[]) {
-    Checking ch("Bob", 100, 50);
-    Transact(&ch);
-    std::unique_ptr<Checking> chOscar {new Checking{"Oscar", 200,100} };
-    auto chCyan = std::make_unique<Checking>("Cyan", 50,50);
-    Transact(&chOscar);
-    Transact(&chCyan);
 
+class Animal{
+public:
+    void Eat(){
+        std::cout<<" Animal eating "<<std::endl;
+    }
+    void Run(){
+        std::cout<<" Animal running "<<std::endl;
+    }
+    void Speak(){
+        std::cout<<" Animal speaking "<<std::endl;
+    }
+};
+class Dog : public Animal{
+public:
+    void Eat(){
+        std::cout<<" Dog eating meat "<<std::endl;
+    }
+    void Speak(){
+        std::cout<<" Dog barking "<<std::endl;
+    }
+};
+
+
+int main(int argc, const char * argv[]) {
+
+    Dog d;
+    d.Eat();
+    d.Run();
+    d.Speak();
+    
+//    Checking ch("Bob", 100, 50);
+//    Transact(&ch);
     return 0;
 }
