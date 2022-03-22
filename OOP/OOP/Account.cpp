@@ -11,11 +11,11 @@ int Account::s_ANGenerator = 1000;
 Account::Account(const std::string &name, float balance):
 m_Name(name), m_Balance(balance){
     m_AccNo = ++s_ANGenerator;
-    //std::cout << "Account(const std::string &, float)" << std::endl;
+    std::cout << "Account(const std::string &, float)" << std::endl;
 }
 
 Account::~Account() {
-    //std::cout << "~Account()" << std::endl;
+    std::cout << "~Account()" << std::endl;
 
 }
 

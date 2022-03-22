@@ -10,6 +10,5 @@
 
 #include "Account.hpp"
 void Transact(Account *pAccount);
-void Transact(std::shared_ptr<Account> *shr_pAccount);
 
 #endif /* Transaction_hpp */
