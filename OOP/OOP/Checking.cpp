@@ -10,9 +10,9 @@
 //Checking::Checking(const std::string &name, float balance):Account(name, balance){
 //    Checking(name, balance, 50);
 //}
-//Checking::Checking(const std::string &name, float balance, float minbalance):
-//m_MinimumBalance(minbalance), Account(name, balance){
-//}
+Checking::Checking(const std::string &name, float balance, float minbalance):
+m_MinimumBalance(minbalance), Account(name, balance){
+}
 
 Checking::~Checking() {
 }

@@ -17,7 +17,7 @@ void Transact(Account * pAccount) {
     //    Checking *pChecking = static_cast<Checking*>(pAccount);
     //    std::cout << "Minimum balance of Checking:" << pChecking->GetMinimumBalance() << std::endl;
     //}
-
+//down cast pAccount - smaller to pChecking - larger
     Checking *pChecking = dynamic_cast<Checking*>(pAccount);
     if (pChecking != nullptr) {
         std::cout << "Minimum balance of Checking:" << pChecking->GetMinimumBalance() << std::endl;

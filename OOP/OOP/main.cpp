@@ -35,6 +35,7 @@ public:
 };
  */
 
+/*
 class Zip final {
 public:
     Zip() {
@@ -49,17 +50,17 @@ public:
     void PrintStatistics() {
 
     }
-    /*
-    Destructor is not virtual, therefore it is risky to
-    inherit from this class.
-
-    Zip *p = new FastZip ;
-    delete p ;
-
-    This would call Zip destructor only. Therefore, the destructor
-    of FastZip will not execute & it will not be able to release
-    any resources
-    */
+    
+//    Destructor is not virtual, therefore it is risky to
+//    inherit from this class.
+//
+//    Zip *p = new FastZip ;
+//    delete p ;
+//
+//    This would call Zip destructor only. Therefore, the destructor
+//    of FastZip will not execute & it will not be able to release
+//    any resources
+//
     ~Zip() {
         //release resources
     }
@@ -83,9 +84,9 @@ public:
 class RichText : public Text {
 public:
     //Cannot override because the function is final in base
-    /*void Serialize(float version)override {
-        std::cout << "RichText::Serialize" << std::endl;
-    }*/
+//    void Serialize(float version)override {
+//        std::cout << "RichText::Serialize" << std::endl;
+//    }
 };
 
 class XML : public Document {
@@ -99,6 +100,8 @@ void Write(Document *p) {
     p->Serialize(1.1f);
 }
 #pragma endregion
+*/
+
 int main(int argc, const char * argv[]) {
 //    Dog d;
 //    d.Eat();
@@ -132,8 +135,37 @@ int main(int argc, const char * argv[]) {
 //    Account *acc = new Savings("Ashley", 300, 0.05f);
 //    delete acc;
     
-    XML xml;
-    Write(&xml);
+//    XML xml;
+//    Write(&xml);
+//    Checking ch("Lily", 100);
+//    Account *pAccount = &ch;
+//    Checking *pChecking = pAccount; //base pointer cannot contain a larger child
+//    Checking *pChecking = static_cast<Checking*>(pAccount);
+    
+    Checking ch("Michael",200,50);
+    Savings sv("Michael", 150, 0.05f);
+    Account* pAccount = & ch;
+//    std::cout<< ch.GetMinimumBalance()<<std::endl;
+//    std::cout<< sv.GetInterestRate()<<std::endl;
+    
+    int i{};
+    float f{};
+    const std::type_info &ti1 = typeid(i);
+    const std::type_info &ti2 = typeid(ch);
+    const std::type_info &ti3 = typeid(sv);
+    const std::type_info &ti4 = typeid(*pAccount);
+    
+    std:: cout << ti1.name() << std::endl;
+    std:: cout << ti2.name() << std::endl;
+    std:: cout << ti3.name() << std::endl;
+    std:: cout << ti4.name() << std::endl;
+    
+    if(ti3 == typeid(Savings)){
+        std::cout << "p points to saving object" << std::endl;
+    }
+    else{
+        std::cout << "p does not points to saving object" << std::endl;
+    }
     
     return 0;
 }
