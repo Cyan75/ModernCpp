@@ -102,6 +102,31 @@ void Write(Document *p) {
 #pragma endregion
 */
 
+#pragma region Override
+class Document{
+public:
+    virtual void Serialize(float version){
+        std::cout << "Document::Serialize" << std::endl;
+    }
+};
+class Text : public Document{
+public:
+    void Serialize(float version) override final{
+        std::cout<<"Text::Serialize"<<std::endl;
+    }
+};
+class RichText : public Text{
+public:
+    //cannot override due to the final keyword in base
+//    void Serialize(float version) override{
+//        std::cout<<"Rich Text::Serialize"<<std::endl;
+//    }
+};
+
+class XML : public Document{
+public:
+};
+
 int main(int argc, const char * argv[]) {
 //    Dog d;
 //    d.Eat();
@@ -141,13 +166,20 @@ int main(int argc, const char * argv[]) {
 //    Account *pAccount = &ch;
 //    Checking *pChecking = pAccount; //base pointer cannot contain a larger child
 //    Checking *pChecking = static_cast<Checking*>(pAccount);
-    
+    /*
     Checking ch("Michael",200,50);
     Savings sv("Michael", 150, 0.05f);
+    try {
+        Transact(ch);
+        Transact(sv);
+    } catch (std::exception &ex) {
+        std::cout<<"Exception : "<<ex.what()<<'\n';
+    }
     Account* pAccount = & ch;
+     */
 //    std::cout<< ch.GetMinimumBalance()<<std::endl;
 //    std::cout<< sv.GetInterestRate()<<std::endl;
-    
+    /*
     int i{};
     float f{};
     const std::type_info &ti1 = typeid(i);
@@ -166,6 +198,10 @@ int main(int argc, const char * argv[]) {
     else{
         std::cout << "p does not points to saving object" << std::endl;
     }
+    */
     
+    Text t;
+    Document &doc = t;
+    doc.Serialize(1.2f);
     return 0;
 }

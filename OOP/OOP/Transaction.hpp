@@ -10,5 +10,6 @@
 
 #include "Account.hpp"
 void Transact(Account *pAccount);
+void Transact(Account &pAccount);
 
 #endif /* Transaction_hpp */
