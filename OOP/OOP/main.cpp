@@ -102,31 +102,101 @@ void Write(Document *p) {
 #pragma endregion
 */
 
+/*
 #pragma region Override
 class Document{
 public:
-    virtual void Serialize(float version){
-        std::cout << "Document::Serialize" << std::endl;
-    }
+//    virtual void Serialize(float version){
+//        std::cout << "Document::Serialize" << std::endl;
+//    }
+    
+    //pure virtual
+    virtual void Serialize(float version) = 0;
 };
 class Text : public Document{
 public:
-    void Serialize(float version) override final{
-        std::cout<<"Text::Serialize"<<std::endl;
-    }
+//    void Serialize(float version) override  final{
+//        std::cout<<"Text::Serialize"<<std::endl;
+//    }
 };
 class RichText : public Text{
 public:
     //cannot override due to the final keyword in base
-//    void Serialize(float version) override{
-//        std::cout<<"Rich Text::Serialize"<<std::endl;
-//    }
+    void Serialize(float version) override{
+        std::cout<<"RichText::Serialize"<<std::endl;
+    }
 };
 
 class XML : public Document{
 public:
+    //not overriding Serialised : client doesn't know if XML is not getting serialised
+    // the child class(XML) is not forced to override Serialize
+    void Serialize(float version){
+        std::cout<<"XML::Serialize"<<std::endl;
+    }
 };
 
+void Write(Document *p){
+    p->Serialize(1.1f);
+}
+*/
+
+class Stream{
+    std::string m_FileName;
+public:
+    Stream(const std::string & fileName){
+        std::cout<<"Stream(const std::string & fileName)"<<std::endl;
+    }
+    const std::string & GetFileName() const{
+        return m_FileName;
+    }
+    ~Stream(){
+        std::cout<<"~Stream()"<<std::endl;
+    }
+};
+
+class OutputStream : virtual public Stream{
+    std::ostream &out;
+    
+    public :
+    OutputStream(std::ostream &o, const std::string &fileName) : out(o), Stream(fileName){
+        std::cout<<"OutputStream"<<std::endl;
+    }
+    std::ostream & operator << (const std::string &data){
+        out<<data;
+        return out;
+    }
+    ~OutputStream(){
+        std::cout<<"~OutputStream()"<<std::endl;
+    }
+};
+
+class InputStream : virtual public Stream{
+    std::istream &in;
+    
+    public :
+    InputStream(std::istream &i, const std::string &fileName) : in(i), Stream(fileName){
+        std::cout<<"InputStream"<<std::endl;
+    }
+    std::istream & operator >> (std::string &data){
+        in >> data;
+        return in;
+    }
+    ~InputStream(){
+        std::cout<<"~InputStream()"<<std::endl;
+    }
+};
+
+class IOStream : public OutputStream, public InputStream{
+public:
+    IOStream(const std::string &fileName) : OutputStream(std::cout,fileName), InputStream(std::cin, fileName), Stream(fileName){
+        std::cout<<"IOStream"<<std::endl;
+    }
+    ~IOStream(){
+        std::cout<<"~IOStream()"<<std::endl;
+    }
+    
+};
 int main(int argc, const char * argv[]) {
 //    Dog d;
 //    d.Eat();
@@ -200,8 +270,18 @@ int main(int argc, const char * argv[]) {
     }
     */
     
-    Text t;
-    Document &doc = t;
-    doc.Serialize(1.2f);
+    /*
+//    Text t;
+//    Document &doc = t;
+//    doc.Serialize(1.2f);
+    XML xml;
+    Write(&xml);
+     */
+    
+    IOStream stream("doc.txt");
+    std::string data;
+    stream >> data;
+    stream << data;
+    std::cout << stream.GetFileName() << std::endl;
     return 0;
 }
