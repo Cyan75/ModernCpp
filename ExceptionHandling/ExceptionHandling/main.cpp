@@ -9,7 +9,22 @@
 #include <memory>
 #include <vector>
 #include <random>
-
+void Test(int x)noexcept(true) {
+    std::cout << x << std::endl;
+    throw x;
+}
+int Sum(int x, int y)noexcept(noexcept(Test(x))) {
+    Test(x);
+    return x + y;
+}
+class A {
+public:
+    //Destructors are implicitly noexcept(true) in C++11
+    ~A() {
+        throw 3;
+    }
+};
+/*
 class A{
 public:
     A(){
@@ -60,6 +75,7 @@ public:
 //        delete pArr;
     }
 };
+ */
 /*
 void ProcessRecords(int count){
 //    Test t;
@@ -139,11 +155,23 @@ int main(int argc, const char * argv[]) {
     
 //    std::cout<<ProcessRecords(std::numeric_limits<int>::max())<<std::endl;
      */
+    /*
     try {
         Test t;
         throw std::runtime_error("Exception");
     } catch (std::runtime_error &ex) {
         std::cout << ex.what() <<std::endl;
+    }
+     */
+    A a;
+    //boolalpha manipulator prints 0 & 1 as false & true
+    std::cout << std::boolalpha << noexcept(a.~A()) << std::endl;
+    try {
+        Sum(3, 5);
+        //Other statements
+    }
+    catch (int x) {
+        std::cout << x << std::endl ;
     }
     return 0;
 }
