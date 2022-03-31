@@ -8,17 +8,18 @@
 #include <iostream>
 #include "Header.h"
 void Write() {
-    std::ofstream out{"data.txt"};
+    std::ofstream out{"data.txt", std::ios::out};
     out << "Hello world" << std::endl;
     out << 10 << std::endl;
     out.close();
 }
 void Read() {
-    std::ifstream input{ "data.txt" };
+    std::ifstream input{ "data.txt", std::ios::in };
     //if (!input.is_open()) {
     //    std::cout << "Could not open the file" << std::endl;
     //    return;
     //}
+    
     if (input.fail()) {
         std::cout << "Could not open the file" << std::endl;
         return;
@@ -27,7 +28,7 @@ void Read() {
     std::getline(input, message);
     int value{};
     input >> value;
-    input >> value;
+//    input >> value;
     if (input.eof()) {
         std::cout << "End of file encountered" << std::endl;
     }
@@ -43,6 +44,7 @@ void Read() {
     std::cout << message << ":" << value << std::endl;
 }
 int main(int argc, const char * argv[]) {
+    /*
     std::string fileName{"~/Desktop/Computer_Programming/ModernC++/FileIO/FileIO/newFile.txt"};
     std::cout<<fileName<<std::endl;
     
@@ -53,7 +55,8 @@ int main(int argc, const char * argv[]) {
     // delimeter for raw string literals
     std::string message{R"BLUE(C++ introduced filesystem API "(C++17)")BLUE"};
     std::cout<<message<<std::endl;
-//    Write();
-//    Read();
+    */
+    Write();
+    Read();
     return 0;
 }
