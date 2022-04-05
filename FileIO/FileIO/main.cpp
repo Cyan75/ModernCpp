@@ -83,42 +83,44 @@ void UsingFstream(){
     std::cout<<line<<std::endl;
 }
 
-int main(int argc, const char * argv[]) {
-    /*
-    std::string fileName{"~/Desktop/Computer_Programming/ModernC++/FileIO/FileIO/newFile.txt"};
-    std::cout<<fileName<<std::endl;
-    
-    //raw string literals with R"()"
-    std::string rawLiteral{R"(raw string literal)"};
-    std::cout<<rawLiteral<<std::endl;
-    
-    // delimeter for raw string literals
-    std::string message{R"BLUE(C++ introduced filesystem API "(C++17)")BLUE"};
-    std::cout<<message<<std::endl;
-    */
-    /*depricated?*/
-    /*
-    using namespace std::experimental::filesystem;
-    path source(current_path());
-    source /= "main.cpp";
-    
-    path dest(current_path());
-    dest /="Copy.cpp";
-    std::ifstream input{source};
-    if(!input){
-        std::cout << "Source file not found" <<std::endl;
-        return -1;
-    }
-    std::ofstream output{dest};
-    std::string line;
-    while(!std::getline(input, line).eof()){
-        output<<line<<std::endl;
-    }
-    input.close();
-    output.close();
-     */
-//     Write();
-//     Read();
-    UsingFstream();
-    return 0;
-}
+//int main(int argc, const char * argv[]) {
+//    /*
+//    std::string fileName{"~/Desktop/Computer_Programming/ModernC++/FileIO/FileIO/newFile.txt"};
+//    std::cout<<fileName<<std::endl;
+//
+//    //raw string literals with R"()"
+//    std::string rawLiteral{R"(raw string literal)"};
+//    std::cout<<rawLiteral<<std::endl;
+//
+//    // delimeter for raw string literals
+//    std::string message{R"BLUE(C++ introduced filesystem API "(C++17)")BLUE"};
+//    std::cout<<message<<std::endl;
+//    */
+//    /*depricated?*/
+//    /*
+//    using namespace std::experimental::filesystem;
+//    path source(current_path());
+//    source /= "main.cpp";
+//
+//    path dest(current_path());
+//    dest /="Copy.cpp";
+//    std::ifstream input{source};
+//    if(!input){
+//        std::cout << "Source file not found" <<std::endl;
+//        return -1;
+//    }
+//    std::ofstream output{dest};
+//    std::string line;
+//    while(!std::getline(input, line).eof()){
+//        output<<line<<std::endl;
+//    }
+//    input.close();
+//    output.close();
+//     */
+////     Write();
+////     Read();
+//    UsingFstream();
+//    return 0;
+//}
+
+
