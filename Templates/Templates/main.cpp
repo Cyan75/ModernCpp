@@ -24,7 +24,7 @@ T Max(T x, T y) {
 template char Max(char x, char y);
 
 //Explicit Specialization : already instantiated
-//template<> const char * Max(const char *x, const char *y) 
+//template<> const char * Max(const char *x, const char *y)
 template<> const char * Max<const char*>(const char *x, const char *y) {
     std::cout << "Max<const char*>()" << std::endl;
     return strcmp(x, y) > 0 ? x : y;
@@ -74,20 +74,21 @@ T Sum(T (&arr)[size]) {
     return sum;
 }
 int main(int argc, const char * argv[]) {
-//    Print<3>();
-//    int arr[]{ 3,1,9,7 };
-//    //int (&ref)[5] = arr ;
-//    int sum = Sum(arr);
-//    std::cout << sum << std::endl;
     
 //    Max(3,5);
 //    Max(3.1, 6.4);
 //    Max(static_cast<float>(3),5.1f);
 //    Max<double>(3,4.2);
     
-    const char *b{"B"};
-    const char *a{"A"};
-    auto s = Max(a,b);
-    std::cout<< s <<std::endl;
+//    const char *b{"B"};
+//    const char *a{"A"};
+//    auto s = Max(a,b);
+//    std::cout<< s <<std::endl;
+    
+    Print<3>();
+    int arr[]{ 3,1,9,7 };
+    //int (&ref)[5] = arr ; // should be reference to array of size 5 not 4
+    int sum = Sum(arr);
+    std::cout << sum << std::endl;
     return 0;
 }
