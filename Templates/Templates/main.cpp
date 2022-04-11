@@ -4,7 +4,7 @@
 //
 //  Created by Cyan on 2022/04/06.
 //
-
+/*
 #include <iostream>
 //Old Code
 //int Max(int x, int y) {
@@ -92,3 +92,4 @@ int main(int argc, const char * argv[]) {
     std::cout << sum << std::endl;
     return 0;
 }
+*/

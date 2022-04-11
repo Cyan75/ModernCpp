@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DBA176F927FDD7AC000D6E15 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBA176F827FDD7AC000D6E15 /* main.cpp */; };
+		DBA1770128047B9C000D6E15 /* Integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBA176FF28047B9C000D6E15 /* Integer.cpp */; };
+		DBA1770328047C77000D6E15 /* PerfectForwardMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBA1770228047C77000D6E15 /* PerfectForwardMain.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,9 @@
 /* Begin PBXFileReference section */
 		DBA176F527FDD7AC000D6E15 /* Templates */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Templates; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA176F827FDD7AC000D6E15 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		DBA176FF28047B9C000D6E15 /* Integer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Integer.cpp; sourceTree = "<group>"; };
+		DBA1770028047B9C000D6E15 /* Integer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Integer.hpp; sourceTree = "<group>"; };
+		DBA1770228047C77000D6E15 /* PerfectForwardMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PerfectForwardMain.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,9 @@
 			isa = PBXGroup;
 			children = (
 				DBA176F827FDD7AC000D6E15 /* main.cpp */,
+				DBA1770228047C77000D6E15 /* PerfectForwardMain.cpp */,
+				DBA176FF28047B9C000D6E15 /* Integer.cpp */,
+				DBA1770028047B9C000D6E15 /* Integer.hpp */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -118,6 +126,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA1770328047C77000D6E15 /* PerfectForwardMain.cpp in Sources */,
+				DBA1770128047B9C000D6E15 /* Integer.cpp in Sources */,
 				DBA176F927FDD7AC000D6E15 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
