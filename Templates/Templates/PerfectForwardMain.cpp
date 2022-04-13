@@ -32,6 +32,7 @@ template<typename T1, typename T2>
 Employee *Create(T1 &&a, T2 &&b){
     return new Employee(a,std::forward<T2>(b));
 }
+/*
 int main(){
 //    Employee emp1{"Jake", 100};
 //    std::string name = "Cyan";
@@ -43,3 +44,4 @@ int main(){
     auto emp = Create("Jane", Integer{250});
     return 0;
 }
+*/

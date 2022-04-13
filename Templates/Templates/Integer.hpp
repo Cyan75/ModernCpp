@@ -29,5 +29,6 @@ public:
     void SetValue(int value);
     ~Integer();
 
+    friend std::ostream & operator <<(std::ostream & out, const Integer &obj);
 };
 #endif /* Integer_hpp */
