@@ -47,13 +47,13 @@ void Print(T &&a, Params&&... args) {
 }
 
 
-int main() {
-    //Print({ 1,2.5,3,4 });
-//    Print(1, 2.5, 3, "4");
-    Integer val{ 1 };
-    Print(0, val, Integer{ 2 });
-    return 0;
-}
+//int main() {
+//    //Print({ 1,2.5,3,4 });
+////    Print(1, 2.5, 3, "4");
+//    Integer val{ 1 };
+//    Print(0, val, Integer{ 2 });
+//    return 0;
+//}
 /*
 1. Print(1, 2.5, 3, "4") ;
 2. Print(2.5, 3, "4") ;
