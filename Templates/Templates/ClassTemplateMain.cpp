@@ -52,7 +52,7 @@ template<typename T, int size>
  Stack<T, size> Stack<T,size>::Create(){
     return Stack<T, size>();
 }
-
+/*
 int main(){
 //    Stack s;
 //    Stack<int> s;
@@ -69,3 +69,4 @@ int main(){
     }
     return 0;
 }
+*/

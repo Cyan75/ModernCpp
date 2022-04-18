@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DB3D5BC02808769A000B0330 /* ClassTemplateMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB3D5BBF2808769A000B0330 /* ClassTemplateMain.cpp */; };
+		DB3D5BC2280DB150000B0330 /* ClassTemplateExplicitSpecialisationMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DB3D5BC1280DB150000B0330 /* ClassTemplateExplicitSpecialisationMain.cpp */; };
 		DBA176F927FDD7AC000D6E15 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBA176F827FDD7AC000D6E15 /* main.cpp */; };
 		DBA1770128047B9C000D6E15 /* Integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBA176FF28047B9C000D6E15 /* Integer.cpp */; };
 		DBA1770328047C77000D6E15 /* PerfectForwardMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBA1770228047C77000D6E15 /* PerfectForwardMain.cpp */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		DB3D5BBF2808769A000B0330 /* ClassTemplateMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ClassTemplateMain.cpp; sourceTree = "<group>"; };
+		DB3D5BC1280DB150000B0330 /* ClassTemplateExplicitSpecialisationMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ClassTemplateExplicitSpecialisationMain.cpp; sourceTree = "<group>"; };
 		DBA176F527FDD7AC000D6E15 /* Templates */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Templates; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBA176F827FDD7AC000D6E15 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		DBA176FF28047B9C000D6E15 /* Integer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Integer.cpp; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				DBA1770028047B9C000D6E15 /* Integer.hpp */,
 				DBA1770428071125000D6E15 /* VariadicTemplatesMain.cpp */,
 				DB3D5BBF2808769A000B0330 /* ClassTemplateMain.cpp */,
+				DB3D5BC1280DB150000B0330 /* ClassTemplateExplicitSpecialisationMain.cpp */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 				DBA1770128047B9C000D6E15 /* Integer.cpp in Sources */,
 				DB3D5BC02808769A000B0330 /* ClassTemplateMain.cpp in Sources */,
 				DBA176F927FDD7AC000D6E15 /* main.cpp in Sources */,
+				DB3D5BC2280DB150000B0330 /* ClassTemplateExplicitSpecialisationMain.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
