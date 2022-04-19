@@ -16,7 +16,7 @@ public:
     PrettyPrinter(T *data) :m_pData(data) {
 
     }
-    void Print() { 
+    void Print() {
         std::cout << "Columns:" << columns << std::endl;
         std::cout << "{" << *m_pData << "}" << std::endl;
     }
@@ -74,6 +74,7 @@ public:
         delete[] m_ptr;
     }
 };
+/*
 int main() {
     int data = 800;
     PrettyPrinter<int, 80> p{ &data };
@@ -83,4 +84,4 @@ int main() {
     std::cout << s1[0] << std::endl;
     return 0;
 }
-
+*/
